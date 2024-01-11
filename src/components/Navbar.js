@@ -6,7 +6,7 @@ export default function Navbar() {
         <>
             <nav className="navbar is-warning" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
-                    <a className="navbar-item" href="/">
+                    <a className="navbar-item" href="/expensetrackerfrontend/">
                         <img alt="" src="logo.png" width="200" height="28" />
                     </a>
 
@@ -15,7 +15,7 @@ export default function Navbar() {
 
                 <div id="navbarBasicExample" className="navbar-menu">
                     <div className="navbar-start">
-                        <Link to="/" className="navbar-item">
+                        <Link to="/expensetrackerfrontend/" className="navbar-item">
                             Home
                         </Link>
 
@@ -49,7 +49,7 @@ export default function Navbar() {
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
-                                <Link to="/add">
+                                <Link to="/expensetrackerfrontend/add">
                                     <a className="button is-primary">
                                         <strong>+ Add</strong>
                                     </a>

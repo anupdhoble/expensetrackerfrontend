@@ -28,8 +28,8 @@ function App() {
         <ToastContainer />
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<Table showNotification={showNotification} toast={toast}/>} />;
-          <Route exact path="/add" element={<Add showNotification={showNotification} toast={toast}/>} />;
+          <Route exact path="/expensetrackerfrontend/" element={<Table showNotification={showNotification} toast={toast}/>} />;
+          <Route exact path="/expensetrackerfrontend/add" element={<Add showNotification={showNotification} toast={toast}/>} />;
         </Routes>
       </Router>
     </>

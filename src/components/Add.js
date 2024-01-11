@@ -91,7 +91,7 @@ export default function Add({ showNotification, toast }) {
                 } else {
                     showNotification('Failed to add expense. Status:', response.status);
                 }
-                navigate("/"); //Navigates to home page
+                navigate("/expensetrackerfrontend/"); //Navigates to home page
             } catch (error) {
                 console.error('An error occurred while adding the expense:', error.message);
             } finally {
@@ -180,7 +180,7 @@ export default function Add({ showNotification, toast }) {
                 <div className="control">
                     <button className="button is-link" onClick={Submit}>Submit</button>
                 </div>
-                <Link to="/" className="control">
+                <Link to="/expensetrackerfrontend/" className="control">
                     <button className="button is-link is-light">Cancel</button>
                 </Link>
             </div>
