@@ -35,7 +35,7 @@ export default function Add({ showNotification, toast }) {
         setPurpose(e.target.value);
     }
     const formCheck = () => {
-        const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+        const dateRegex = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
         if (title === "") {
             showNotification("Title can't be Empty", "error");
             return false;
@@ -58,7 +58,7 @@ export default function Add({ showNotification, toast }) {
     }
 
     const Submit = async () => {
-        const url = 'https://expensetrackerap.azurewebsites.net/expense/new';
+        const url = 'http://localhost:5000/expense/new';
 
         if (formCheck()) {
             const data = {
@@ -91,7 +91,7 @@ export default function Add({ showNotification, toast }) {
                 } else {
                     showNotification('Failed to add expense. Status:', response.status);
                 }
-                navigate("/expensetrackerfrontend/"); //Navigates to home page
+                navigate("/"); //Navigates to home page
             } catch (error) {
                 console.error('An error occurred while adding the expense:', error.message);
             } finally {

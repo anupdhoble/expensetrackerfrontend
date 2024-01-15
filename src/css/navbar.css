@@ -2,3 +2,6 @@
     align-items: stretch;
     display: flex;
 }
+button{
+    margin-right: .5rem;
+}

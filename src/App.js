@@ -5,8 +5,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import Navbar from './components/Navbar';
 import Table from './components/Table';
 import Add from './components/Add';
+import Signup from './components/Signup';
+import Login from './components/Login';
+
+// import UserContext from "./context/user/UserContext";
+// import { useContext } from "react";
 
 function App() {
+//   const user=useContext(UserContext);
+//   if(localStorage.getItem('authToken')){
+//     user.handleLogin();
+// }
   const showNotification = (message, type) => {
     switch (type) {
       case 'success':
@@ -23,16 +32,20 @@ function App() {
     }
   };
   return (
-    <>
+
+    
       <Router>
         <ToastContainer />
         <Navbar />
         <Routes>
-          <Route exact path="/expensetrackerfrontend/" element={<Table showNotification={showNotification} toast={toast}/>} />;
-          <Route exact path="/expensetrackerfrontend/add" element={<Add showNotification={showNotification} toast={toast}/>} />;
+          <Route exact path="/" element={<Table showNotification={showNotification} toast={toast}/>} />
+          <Route exact path="/add" element={<Add showNotification={showNotification} toast={toast}/>} />
+          <Route exact path="/login" element={<Login showNotification={showNotification} toast={toast}/>} />
+          <Route exact path="/signup" element={<Signup showNotification={showNotification} toast={toast}/>} />
         </Routes>
       </Router>
-    </>
+
+
   );
 }
 

@@ -9,17 +9,11 @@ const Table = ({ showNotification, toast }) => {
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
-    //?   //Here i am using toastify npm library for notification promise type
-        //?   const response = await toast.promise(
-        //?     fetch("http://localhost:5000/expense/getAll"),
-        //?     {
-        //?       pending: 'Fetching...',
-        //?       success: 'Data Synced 👌',
-        //?       error: 'Error syncing data 🤯'
-        //?     }
-        //? );
+   
     try {
-      const response = await fetch('https://expensetrackerap.azurewebsites.net/expense/getAll');
+      const response = await fetch("http://localhost:5000/expense/getAll");
+        
+      
       const result = await response.json();
       setData(result);
     } catch (error) {
@@ -40,23 +34,23 @@ const Table = ({ showNotification, toast }) => {
       //   }
       // });
       const response = await toast.promise(
-        fetch(`https://expensetrackerap.azurewebsites.net/expense/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }),
+        fetch(`http://localhost:5000/expense/delete/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }),
         {
           pending: 'Removing...',
           success: 'Item Removed 👌',
           error: 'Error removing data 🤯'
         }
-    );
+      );
       if (response.ok) {
-        
+
         fetchData();
       } else {
-        showNotification('Failed to delete expense. ',"error");
+        showNotification('Failed to delete expense. ', "error");
       }
     }
   }

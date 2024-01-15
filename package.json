@@ -1,5 +1,4 @@
 {
-  "homepage": "https://anupdhoble.github.io/expensetrackerfrontend/",
   "name": "expense-tracker-frontend",
   "version": "0.1.0",
   "private": true,
@@ -43,6 +42,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "@babel":"plugin-proposal-private-property-in-object"
   }
 }
