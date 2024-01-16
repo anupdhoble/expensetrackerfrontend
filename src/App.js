@@ -41,7 +41,7 @@ function App() {
           <Route exact path="/" element={<Table showNotification={showNotification} toast={toast}/>} />
           <Route exact path="/add" element={<Add showNotification={showNotification} toast={toast}/>} />
           <Route exact path="/login" element={<Login showNotification={showNotification} toast={toast}/>} />
-          <Route exact path="/signup" element={<Signup showNotification={showNotification} toast={toast}/>} />
+          <Route exact path="/signup" element={<Signup toast={toast}/>} />
         </Routes>
       </Router>
 

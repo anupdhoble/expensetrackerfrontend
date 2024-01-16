@@ -7,14 +7,14 @@ export default function Login({ showNotification, toast }) {
     const navigate = useNavigate();
 
     const user = useContext(UserContext);
-    const [email, setemail] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     }
     const handleemailChange = (e) => {
-        setemail(e.target.value);
+        setEmail(e.target.value);
     }
     const formCheck = () => {
         if (email === "") {
@@ -25,6 +25,10 @@ export default function Login({ showNotification, toast }) {
             return false;
         }
         else return true;
+    }
+    const Refresh=()=>{
+        setPassword("");
+        setEmail("");
     }
     const handleSubmit = async () => {
         if (formCheck()) {
@@ -52,17 +56,21 @@ export default function Login({ showNotification, toast }) {
                         localStorage.setItem('authToken', authToken);
                         
                         user.handleLogin();
+                        Refresh();
                         navigate("/"); //Navigates to home page
                     }
                     else {
                         toast.error("Invalid credentials");
                         localStorage.removeItem('authToken');
+                        Refresh();
                     }
                 } else {
                     toast.error("Failed to login user");
+                    Refresh();
                 }
             } catch (error) {
                 toast.error("Failed to login user");
+                Refresh();
             }
         }
     }
