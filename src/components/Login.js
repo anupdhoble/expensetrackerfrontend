@@ -32,7 +32,7 @@ export default function Login({ showNotification, toast }) {
     }
     const handleSubmit = async () => {
         if (formCheck()) {
-            const url = 'http://localhost:5000/user/auth';
+            const url = 'http://192.168.0.104:5000/user/auth';
             const data = {
                 email: email,
                 password: password

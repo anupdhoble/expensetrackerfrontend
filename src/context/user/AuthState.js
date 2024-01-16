@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 function AuthState(props) {  
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    
 
     useEffect(() => {
         // Check if the user is logged in based on some asynchronous operation
@@ -27,6 +28,7 @@ function AuthState(props) {
         setIsLoggedIn(false);
         localStorage.removeItem('authToken');
         toast.success("Logged out...");
+        window.location.href='/login';
     };
     const handleLogin=()=>{
         setIsLoggedIn(true);

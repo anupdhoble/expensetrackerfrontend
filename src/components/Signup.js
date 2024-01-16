@@ -43,7 +43,7 @@ export default function Signup({ toast }) {
     const handleSubmit = async () => {
         if(formCheck()){
             try {
-                const url = "http://localhost:5000/user/new";
+                const url = "http://192.168.0.104:5000/user/new";
                 const data = {
                     name: name,
                     email: email,

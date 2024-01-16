@@ -31,11 +31,13 @@ export default function Navbar() {
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
-                                <Link to="/add">
+                                {user.isLoggedIn ?(
+                                    <Link to="/add">
                                     <button id="addbtn" className="button is-primary">
                                         <strong>+ Add</strong>
                                     </button>
                                 </Link>
+                                ):(<></>)}
                                 {user.isLoggedIn ? (
                                     <button className="button is-info" onClick={user.handleLogout}>Logout</button>
                                 ) : (
