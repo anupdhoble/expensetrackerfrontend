@@ -32,7 +32,7 @@ function AuthState(props) {
         setIsLoggedIn(false);
         localStorage.removeItem('authToken');
         toast.success("Logged out...");
-        window.location.href='/login';
+        window.location.href='/expensetrackerfrontend/login';
     };
     const handleLogin=()=>{
         setIsLoggedIn(true);
