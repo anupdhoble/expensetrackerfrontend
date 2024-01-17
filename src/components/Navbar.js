@@ -12,7 +12,7 @@ export default function Navbar() {
         <>
             <nav className="navbar is-warning" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
-                    <a className="navbar-item" href="/">
+                    <a className="navbar-item" href="/expensetrackerfrontend/">
                         <img alt="" src={logoImage} width="100vw" height="28px" />
                     </a>
 
