@@ -34,7 +34,7 @@ function App() {
   return (
 
     
-      <Router>
+      <>
         <ToastContainer />
         <Navbar />
         <Routes>
@@ -43,7 +43,7 @@ function App() {
           <Route exact path="/login" element={<Login showNotification={showNotification} toast={toast}/>} />
           <Route exact path="/signup" element={<Signup toast={toast}/>} />
         </Routes>
-      </Router>
+      </>
 
 
   );

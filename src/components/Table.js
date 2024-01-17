@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 // import UserContext from '../context/user/UserContext';
 import { useNavigate } from 'react-router-dom';
 import '../css/table.css';
+import emptyTableImage from '../assests/EmptyTable.gif';
 
 
 
@@ -16,7 +17,7 @@ const Table = ({ showNotification, toast }) => {
 
     try {
       const token = localStorage.getItem('authToken');
-      const url = "https://192.168.0.104:5000/expense/getAll";
+      const url = "https://expensetrackerap.azurewebsites.net/expense/getAll";
       const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -55,7 +56,7 @@ const Table = ({ showNotification, toast }) => {
       //   }
       // });
       const response = await toast.promise(
-        fetch(`https://192.168.0.104:5000/expense/delete/${id}`, {
+        fetch(`https://expensetrackerap.azurewebsites.net/expense/delete/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json"
@@ -81,7 +82,7 @@ const Table = ({ showNotification, toast }) => {
       {isEmpty ? (
         <>
         <div className="is-flex is-flex-direction-column is-align-items-center">
-          <img className="has-text-centered" src='./EmptyTable.gif' alt='Add New Expense'/>
+          <img className="has-text-centered" src={emptyTableImage} alt='Add New Expense'/>
           <h2 className='is-size-3 has-text-grey-light has-text-centered'>Add an Expense to get started..</h2>
         </div>
       </>

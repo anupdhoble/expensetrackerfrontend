@@ -32,7 +32,7 @@ export default function Login({ showNotification, toast }) {
     }
     const handleSubmit = async () => {
         if (formCheck()) {
-            const url = 'https://192.168.0.104:5000/user/auth';
+            const url = 'https://expensetrackerap.azurewebsites.net/user/auth';
             const data = {
                 email: email,
                 password: password
