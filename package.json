@@ -1,7 +1,7 @@
 
 {
 
-
+  "homepage":"https://anupdhoble.github.io/expensetrackerfrontend",
   "name": "expense-tracker-frontend",
   "version": "0.1.0",
   "private": true,

@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthState from './context/user/AuthState';
+import { HashRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <HashRouter>
     <AuthState>
       <App />
     </AuthState>
+    </HashRouter>
   </React.StrictMode>
 );
 

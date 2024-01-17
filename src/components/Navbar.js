@@ -13,21 +13,13 @@ export default function Navbar() {
             <nav className="navbar is-warning" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
                     <a className="navbar-item" href="/">
-                        <img alt="" src={logoImage} width="200px" height="28px" />
+                        <img alt="" src={logoImage} width="100vw" height="28px" />
                     </a>
 
 
                 </div>
 
                 <div id="navbarBasicExample" className="navbar-menu">
-                    <div className="navbar-start">
-                        <Link to="/" className="navbar-item">
-                            Home
-                        </Link>
-
-                    
-                    </div>
-
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">

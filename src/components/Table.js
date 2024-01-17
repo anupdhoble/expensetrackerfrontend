@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useState, useEffect } from 'react';
-import UserContext from '../context/user/UserContext';
+// import UserContext from '../context/user/UserContext';
 import { useNavigate } from 'react-router-dom';
-
+import '../css/table.css';
 
 
 
@@ -11,7 +11,7 @@ const Table = ({ showNotification, toast }) => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [isEmpty, setIsEmpty] = useState(false);
-  const user = useContext(UserContext);
+  // const user = useContext(UserContext);
   const fetchData = async () => {
 
     try {
@@ -25,26 +25,26 @@ const Table = ({ showNotification, toast }) => {
         }
       });
 
-
-      const result = await response.json();
+      if(response.ok){
+        const result = await response.json();
       setData(result);
       if (result.length === 0) {
         setIsEmpty(true);
+      }
+      }
+      else{
+        toast.info("Please Login");
+        navigate('/login');
       }
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
-
   useEffect(() => {
-    if (user.isLoggedIn) {
-      fetchData();
-    }
-    else {
-      toast.info("Please Login")
-      navigate('/login');
-    }
-  },[]);
+    fetchData();
+    
+  },[fetchData]);
+  
 
   const handleDelete = async (id) => {
     if (window.confirm("Do you want to delete selected item?")) {
@@ -77,7 +77,7 @@ const Table = ({ showNotification, toast }) => {
   }
 
   return (
-    <>
+    <div className="table-container">
       {isEmpty ? (
         <>
         <div className="is-flex is-flex-direction-column is-align-items-center">
@@ -87,13 +87,13 @@ const Table = ({ showNotification, toast }) => {
       </>
       
       ) : (
-        <table className="table is-fullwidth">
+        <table className="table">
           <thead>
             <tr>
               <th>Title</th >
               <th>Amount</th>
               <th>Date</th>
-              <th>Purpose</th>
+              <th className="is-hidden-mobile">Purpose</th>
               <th>Type</th>
               <th>Delete</th>
             </tr >
@@ -104,7 +104,7 @@ const Table = ({ showNotification, toast }) => {
                 <td>{row.title}</td>
                 <td>{row.amount}</td>
                 <td>{row.date}</td>
-                <td>{row.purpose}</td>
+                <td className="is-hidden-mobile">{row.purpose}</td>
                 <td>{row.type}</td>
                 <td><button className="button is-danger" onClick={() => handleDelete(row._id)}>🗑️</button></td>
               </tr>
@@ -112,7 +112,7 @@ const Table = ({ showNotification, toast }) => {
           </tbody>
         </table >
       )}
-    </>
+    </div>
   );
 };
 
