@@ -16,7 +16,7 @@ const Table = ({ showNotification, toast }) => {
 
     try {
       const token = localStorage.getItem('authToken');
-      const url = "http://192.168.0.104:5000/expense/getAll";
+      const url = "https://192.168.0.104:5000/expense/getAll";
       const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -48,14 +48,14 @@ const Table = ({ showNotification, toast }) => {
 
   const handleDelete = async (id) => {
     if (window.confirm("Do you want to delete selected item?")) {
-      // const response = await fetch(`http://localhost:5000/expense/delete/${id}`, {
+      // const response = await fetch(`https://localhost:5000/expense/delete/${id}`, {
       //   method: "DELETE",
       //   headers: {
       //     "Content-Type": "application/json"
       //   }
       // });
       const response = await toast.promise(
-        fetch(`http://192.168.0.104:5000/expense/delete/${id}`, {
+        fetch(`https://192.168.0.104:5000/expense/delete/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json"

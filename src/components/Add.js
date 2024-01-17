@@ -61,7 +61,7 @@ export default function Add({ showNotification, toast }) {
     }
 
     const Submit = async () => {
-        const url = 'http://192.168.0.104:5000/expense/new';
+        const url = 'https://192.168.0.104:5000/expense/new';
 
         if(user.isLoggedIn){
             if (formCheck()) {
