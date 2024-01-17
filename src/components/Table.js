@@ -28,7 +28,7 @@ const Table = ({ showNotification, toast }) => {
 
       const result = await response.json();
       setData(result);
-      if (data.length === 0) {
+      if (result.length === 0) {
         setIsEmpty(true);
       }
     } catch (error) {
@@ -44,7 +44,7 @@ const Table = ({ showNotification, toast }) => {
       toast.info("Please Login")
       navigate('/login');
     }
-  });
+  },[]);
 
   const handleDelete = async (id) => {
     if (window.confirm("Do you want to delete selected item?")) {

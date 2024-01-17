@@ -12,10 +12,14 @@ function AuthState(props) {
           try {
             // Perform your authentication check here
             // For example, you might check if there's a valid authentication token in localStorage
-            const authToken = localStorage.getItem('authToken');
-            const userIsLoggedIn = !!authToken;
+            const token = localStorage.getItem('authToken');
+            if(token){
+              setIsLoggedIn(true);  
+            }else{
+              setIsLoggedIn(false);
+            }
     
-            setIsLoggedIn(userIsLoggedIn);
+            
           } catch (error) {
             console.error('Error checking login status:', error);
           }
