@@ -1,23 +1,17 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-// import UserContext from '../context/user/UserContext';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/table.css';
 import emptyTableImage from '../assests/EmptyTable.gif';
 
-
-
 const Table = ({ showNotification, toast }) => {
-
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [isEmpty, setIsEmpty] = useState(false);
-  // const user = useContext(UserContext);
-  const fetchData = async () => {
 
+  const fetchData = useCallback(async () => {
     try {
       const token = localStorage.getItem('authToken');
-      const url = "https://expensetrackerap.azurewebsites.net/expense/getAll";
+      const url = "https://expensetrackerbackend-wgbe.onrender.com/expense/getAll";
       const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -26,37 +20,27 @@ const Table = ({ showNotification, toast }) => {
         }
       });
 
-      if(response.ok){
+      if(response.ok) {
         const result = await response.json();
-      setData(result);
-      if (result.length === 0) {
-        setIsEmpty(true);
-      }
-      }
-      else{
+        setData(result);
+        setIsEmpty(result.length === 0);
+      } else {
         toast.info("Please Login");
         navigate('/login');
       }
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-  };
+  }, [navigate, toast]); // Add dependencies here
+
   useEffect(() => {
     fetchData();
-    
-  },[fetchData]);
-  
+  }, [fetchData]);
 
   const handleDelete = async (id) => {
     if (window.confirm("Do you want to delete selected item?")) {
-      // const response = await fetch(`https://localhost:5000/expense/delete/${id}`, {
-      //   method: "DELETE",
-      //   headers: {
-      //     "Content-Type": "application/json"
-      //   }
-      // });
       const response = await toast.promise(
-        fetch(`https://expensetrackerap.azurewebsites.net/expense/delete/${id}`, {
+        fetch(`https://expensetrackerbackend-wgbe.onrender.com/expense/delete/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json"
@@ -69,8 +53,7 @@ const Table = ({ showNotification, toast }) => {
         }
       );
       if (response.ok) {
-
-        fetchData();
+        fetchData(); // Refetch data after deletion
       } else {
         showNotification('Failed to delete expense. ', "error");
       }
@@ -80,13 +63,10 @@ const Table = ({ showNotification, toast }) => {
   return (
     <div className="table-container">
       {isEmpty ? (
-        <>
         <div className="is-flex is-flex-direction-column is-align-items-center">
           <img className="has-text-centered" src={emptyTableImage} alt='Add New Expense'/>
           <h2 className='is-size-3 has-text-grey-light has-text-centered'>Add an Expense to get started..</h2>
         </div>
-      </>
-      
       ) : (
         <table className="table">
           <thead>

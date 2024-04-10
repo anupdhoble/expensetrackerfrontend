@@ -32,7 +32,7 @@ export default function Login({ showNotification, toast }) {
     }
     const handleSubmit = async () => {
         if (formCheck()) {
-            const url = 'https://expensetrackerap.azurewebsites.net/user/auth';
+            const url = 'https://expensetrackerbackend-wgbe.onrender.com/user/auth';
             const data = {
                 email: email,
                 password: password

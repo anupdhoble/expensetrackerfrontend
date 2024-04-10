@@ -43,7 +43,7 @@ export default function Signup({ toast }) {
     const handleSubmit = async () => {
         if(formCheck()){
             try {
-                const url = "https://expensetrackerap.azurewebsites.net/user/new";
+                const url = "https://expensetrackerbackend-wgbe.onrender.com/user/new";
                 const data = {
                     name: name,
                     email: email,

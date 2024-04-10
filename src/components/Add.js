@@ -61,7 +61,7 @@ export default function Add({ showNotification, toast }) {
     }
 
     const Submit = async () => {
-        const url = 'https://expensetrackerap.azurewebsites.net/expense/new';
+        const url = 'https://expensetrackerbackend-wgbe.onrender.com/expense/new';
 
         if(user.isLoggedIn){
             if (formCheck()) {
